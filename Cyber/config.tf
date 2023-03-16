@@ -14,22 +14,20 @@ sysctl -p
 
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
-sudo apt-get -y install iptables-persistent netfilter-persistent
+apt -y install iptables-persistent netfilter-persistent
 iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
 netfilter-persistent save
 
 hostnamectl set-hostname desktop
 apt-get update
 apt-get upgrade
-apt install -y xfce4 xfce4-goodies
+#apt install -y xfce4 xfce4-goodies
 apt install -y xrdp filezilla
-apt install -y mysql-workbench-community
-snap connect mysql-workbench-community:password-manager-service :password-manager-service
 snap install brave
 snap install thunderbird
 adduser xrdp ssl-cert
-echo xfce4-session > /home/ubuntu/.xsession
-chown ubuntu:ubuntu /home/ubuntu/.xsession
+#echo xfce4-session > /home/ubuntu/.xsession
+#chown ubuntu:ubuntu /home/ubuntu/.xsession
 systemctl enable --now xrdp
 EOF
 }
