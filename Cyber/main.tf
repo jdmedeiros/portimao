@@ -6,7 +6,7 @@ resource "aws_key_pair" "CyberSecurity" {
 resource "aws_vpc" "CyberSecurity" {
   cidr_block                           = "10.0.0.0/16"
   tags                                 = {
-    "Name" = "PontaDelgada"
+    "Name" = "CyberSecurity"
   }
 }
 
@@ -193,6 +193,7 @@ resource "aws_vpc_security_group_ingress_rule" "cyber_nos_enta" {
     "Name" = "ENTA NOS IP address"
   }
 }
+
 
 resource "aws_vpc_security_group_ingress_rule" "cyber_meo_enta" {
   cidr_ipv4              = "83.240.158.54/32"
