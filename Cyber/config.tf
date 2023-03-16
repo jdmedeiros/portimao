@@ -2,7 +2,7 @@ data "template_file" "desktop" {
   template = <<EOF
 #!/bin/bash
 LOGFILE="/var/log/cloud-config-"$(date +%s)
-SCRIPT_LOG_DETAIL="${LOGFILE}"_$(basename "$0").log
+SCRIPT_LOG_DETAIL="$LOGFILE"_$(basename "$0").log
 
 # Reference: https://serverfault.com/questions/103501/how-can-i-fully-log-all-bash-scripts-actions
 exec 3>&1 4>&2
@@ -19,7 +19,6 @@ snap connect mysql-workbench-community:password-manager-service :password-manage
 snap install brave
 snap install thunderbird
 adduser xrdp ssl-cert
-echo -e "ubuntu\nPassw0rd" | passwd ubuntu
 echo xfce4-session > /home/ubuntu/.xsession
 chown ubuntu:ubuntu /home/ubuntu/.xsession
 systemctl enable --now xrdp
