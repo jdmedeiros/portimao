@@ -13,6 +13,11 @@ variable "desktop_type" {
   default = "c5a.large"
 }
 
+variable "onion_type" {
+  type = string
+  default = "c5a.xlarge"
+}
+
 variable "vpc_ep_svc_name" {
   type = string
   default = "com.amazonaws.us-east-1.s3"

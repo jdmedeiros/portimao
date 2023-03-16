@@ -17,3 +17,8 @@ provider "aws" {
 
   profile = "vocareum"
 }
+
+module "efs" {
+  source  = "terraform-aws-modules/efs/aws"
+  version = "1.1.1"
+}
