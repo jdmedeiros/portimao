@@ -45,8 +45,8 @@ exec 3>&1 4>&2
 trap 'exec 2>&4 1>&3' 0 1 2 3
 exec 1>$SCRIPT_LOG_DETAIL 2>&1
 
-
-
+wget https://raw.githubusercontent.com/jdmedeiros/portimao/main/Cyber/50-cloud-init.yaml.patch
+patch /etc/netplan/50-cloud-init.yaml 50-cloud-init.yaml.patch
 patch /etc/netplan/50-cloud-init.yaml.patch < 50-cloud-init.yaml.patch
 hostnamectl set-hostname onion
 apt update && apt -y update && apt -y install git build-essential
