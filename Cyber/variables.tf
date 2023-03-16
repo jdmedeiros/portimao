@@ -15,7 +15,7 @@ variable "desktop_type" {
 
 variable "onion_type" {
   type = string
-  default = "c5a.xlarge"
+  default = "c5a.large"
 }
 
 variable "vpc_ep_svc_name" {
