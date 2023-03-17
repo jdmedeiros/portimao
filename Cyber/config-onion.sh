@@ -13,17 +13,23 @@ if [ "$1" = "run" ]; then
   netplan apply
 
   hostnamectl set-hostname onion
-  apt update && apt -y update && apt -y install git build-essential curl ethtool chromium-browser network-manager
+  apt-get update
+  apt-get -y install git build-essential curl ethtool chromium-browser network-manager nfs-common xrdp filezilla
   #apt install -y xfce4 xfce4-goodies
-  apt install -y xrdp filezilla
-  adduser xrdp ssl-cert
   #echo xfce4-session > /home/ubuntu/.xsession
   #chown ubuntu:ubuntu /home/ubuntu/.xsession
+  adduser xrdp ssl-cert
   systemctl enable --now xrdp
 
   mv /etc/netplan/50-cloud-init.yaml /etc/netplan/01-network-manager-all.yaml
   sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+  patch /etc/netplan/01-network-manager-all.yaml < /var/lib/cloud/instance/scripts/50-cloud-init.yaml_2.patch
   systemctl enable --now NetworkManager
   netplan apply
+  mkdir /mnt/efs
+  /var/lib/cloud/instance/scripts/update-fstab.sh
+  mount -a
+  chgrp ubuntu /mnt/efs/
+  chmod g+w /mnt/efs/
 
 fi

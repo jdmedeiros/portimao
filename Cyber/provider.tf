@@ -53,9 +53,24 @@ data "template_cloudinit_config" "config-desktop" {
   }
 }
 
+data "template_file" "script" {
+  template = file("${path.module}/update-fstab.tpl")
+
+  vars = {
+    onion_ip = aws_network_interface.desktop_onion_private1.private_ip,
+    efs_ip = aws_efs_mount_target.onion2-mnt1.ip_address
+  }
+}
+
 data "template_cloudinit_config" "config-onion" {
   gzip = false
   base64_encode = false
+
+  part {
+    filename     = "update-fstab.sh"
+    content_type = "text/x-shellscript"
+    content      = data.template_file.script.rendered
+  }
 
   part {
     filename = var.cloud_config_onion

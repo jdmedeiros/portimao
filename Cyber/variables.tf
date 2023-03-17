@@ -56,4 +56,3 @@ variable "config-netplan-1" {
 variable "config-netplan-2" {
   default = "50-cloud-init.yaml_2.patch"
 }
-

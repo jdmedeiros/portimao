@@ -27,7 +27,8 @@ resource "aws_instance" "onion" {
   }
   user_data = data.template_cloudinit_config.config-onion.rendered
   depends_on = [
-    aws_efs_mount_target.onion2-mnt1
+    aws_efs_mount_target.onion2-mnt1,
+    aws_instance.desktop
   ]
 }
 

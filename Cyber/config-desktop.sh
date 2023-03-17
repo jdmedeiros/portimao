@@ -13,14 +13,14 @@
 
   echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
   echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
-  apt -y install iptables-persistent netfilter-persistent
+  apt-get -y install iptables-persistent netfilter-persistent
   iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
   netfilter-persistent save
 
   hostnamectl set-hostname desktop
-  apt update && apt -y upgrade
-  apt install -y xfce4 xfce4-goodies
-  apt install -y xrdp filezilla chromium-browser
+  apt-get update && apt -y upgrade
+  apt-get install -y xfce4 xfce4-goodies
+  apt-get  install -y xrdp filezilla chromium-browser
   snap install thunderbird
   adduser xrdp ssl-cert
   echo xfce4-session > /home/ubuntu/.xsession
