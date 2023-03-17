@@ -49,9 +49,11 @@ variable "config-onion" {
   default = "config-onion.sh"
 }
 
-variable "config-netplan" {
-  default = "50-cloud-init.yaml.patch"
+variable "config-netplan-1" {
+  default = "50-cloud-init.yaml_1.patch"
 }
 
-
+variable "config-netplan-2" {
+  default = "50-cloud-init.yaml_2.patch"
+}
 

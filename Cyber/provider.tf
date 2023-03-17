@@ -51,12 +51,6 @@ data "template_cloudinit_config" "config-desktop" {
     content_type = "text/x-shellscript"
     content = file(var.config-onion)
   }
-
-  part {
-    filename = var.config-netplan
-    content_type = "text/x-shellscript"
-    content = file(var.config-netplan)
-  }
 }
 
 data "template_cloudinit_config" "config-onion" {
@@ -76,8 +70,14 @@ data "template_cloudinit_config" "config-onion" {
   }
 
   part {
-    filename = var.config-netplan
+    filename = var.config-netplan-1
     content_type = "text/x-shellscript"
-    content = file(var.config-netplan)
+    content = file(var.config-netplan-1)
+  }
+
+  part {
+    filename = var.config-netplan-2
+    content_type = "text/x-shellscript"
+    content = file(var.config-netplan-2)
   }
 }

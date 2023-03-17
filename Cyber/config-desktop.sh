@@ -20,8 +20,7 @@
   hostnamectl set-hostname desktop
   apt update && apt -y upgrade
   apt install -y xfce4 xfce4-goodies
-  apt install -y xrdp filezilla
-  snap install brave
+  apt install -y xrdp filezilla chromium-browser
   snap install thunderbird
   adduser xrdp ssl-cert
   echo xfce4-session > /home/ubuntu/.xsession
