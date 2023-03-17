@@ -1,5 +1,5 @@
---- 000 2023-03-17 10:48:09.882161229 +0000
-+++ 01-network-manager-all.yaml 2023-03-17 10:50:24.167561129 +0000
+--- 50-cloud-init.yaml  2023-03-17 13:02:16.127999857 +0000
++++ 50  2023-03-17 13:09:49.364784228 +0000
 @@ -4,9 +4,14 @@
  # /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
  # network: {config: disabled}
