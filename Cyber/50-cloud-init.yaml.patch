@@ -1,6 +1,10 @@
---- 50-cloud-init.yaml_bak      2023-03-16 22:45:13.413033827 +0000
-+++ 50-cloud-init.yaml  2023-03-16 22:44:13.691770064 +0000
-@@ -7,6 +7,10 @@
+--- 000 2023-03-17 10:48:09.882161229 +0000
++++ 01-network-manager-all.yaml 2023-03-17 10:50:24.167561129 +0000
+@@ -4,9 +4,14 @@
+ # /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+ # network: {config: disabled}
+ network:
++    renderer: NetworkManager
      ethernets:
          ens5:
              dhcp4: true

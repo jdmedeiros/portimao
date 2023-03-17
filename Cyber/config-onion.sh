@@ -8,17 +8,19 @@ if [ "$1" = "run" ]; then
   exec 3>&1 4>&2
   trap 'exec 2>&4 1>&3' 0 1 2 3
   exec 1>$SCRIPT_LOG_DETAIL 2>&1
-
   patch /etc/netplan/50-cloud-init.yaml < /var/lib/cloud/instance/scripts/50-cloud-init.yaml.patch
+  mv /etc/netplan/50-cloud-init.yaml /etc/netplan/01-network-manager-all.yaml
+  sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
+  systemctl enable --now NetworkManager
   netplan apply
   hostnamectl set-hostname onion
   apt update && apt -y update && apt -y install git build-essential curl ethtool
-  apt install -y xfce4 xfce4-goodies
+  #apt install -y xfce4 xfce4-goodies
   apt install -y xrdp filezilla
   snap install brave
   adduser xrdp ssl-cert
-  echo xfce4-session > /home/ubuntu/.xsession
-  chown ubuntu:ubuntu /home/ubuntu/.xsession
+  #echo xfce4-session > /home/ubuntu/.xsession
+  #chown ubuntu:ubuntu /home/ubuntu/.xsession
   systemctl enable --now xrdp
 
 fi
