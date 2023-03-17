@@ -26,6 +26,9 @@ resource "aws_instance" "onion" {
     volume_type           = "gp2"
   }
   user_data = data.template_cloudinit_config.config-onion.rendered
+  depends_on = [
+    aws_efs_mount_target.onion2-mnt1
+  ]
 }
 
 resource "aws_network_interface" "desktop_onion_private1" {
