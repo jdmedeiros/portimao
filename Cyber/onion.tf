@@ -1,5 +1,5 @@
 resource "aws_instance" "onion" {
-  ami                                  = var.deb_based
+  ami                                  = var.onion_ami
   instance_type                        = var.onion_type
   key_name                             = aws_key_pair.CyberSecurity.key_name
   network_interface {
@@ -25,7 +25,7 @@ resource "aws_instance" "onion" {
     volume_size           = 30
     volume_type           = "gp2"
   }
-  user_data = data.template_file.onion.rendered
+  user_data = data.template_cloudinit_config.config-onion.rendered
 }
 
 resource "aws_network_interface" "desktop_onion_private1" {
