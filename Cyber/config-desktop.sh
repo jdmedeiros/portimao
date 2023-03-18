@@ -15,6 +15,7 @@
   echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
   apt-get -y install iptables-persistent netfilter-persistent
   iptables -t nat -A POSTROUTING -o ens5 -j MASQUERADE
+  iptables -A PREROUTING -i ens5 -p tcp --dport 3390 -j DNAT --to-destination 10.0.1.11:3389
   netfilter-persistent save
 
   hostnamectl set-hostname desktop

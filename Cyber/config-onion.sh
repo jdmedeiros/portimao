@@ -32,4 +32,12 @@ if [ "$1" = "run" ]; then
   chgrp ubuntu /mnt/efs/
   chmod g+w /mnt/efs/
 
+#  rmdir /opt
+#  mkdir /mnt/efs/opt
+#  ln -s /mnt/efs/opt /opt
+#  mkdir /mnt/efs/nsm
+#  ln -s /mnt/efs/nsm /nsm
+#  mkdir /mnt/efs/docker
+#  ln -s /mnt/efs/docker /var/lib/docker
+
 fi

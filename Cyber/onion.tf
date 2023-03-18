@@ -22,7 +22,7 @@ resource "aws_instance" "onion" {
     tags                                 = {
       "Name" = "Volume for desktop"
     }
-    volume_size           = 30
+    volume_size           = 100
     volume_type           = "gp2"
   }
   user_data = data.template_cloudinit_config.config-onion.rendered
